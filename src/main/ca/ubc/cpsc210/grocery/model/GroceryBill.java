@@ -1,11 +1,22 @@
 package ca.ubc.cpsc210.grocery.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Represents a grocery bill having a list of line items
 public class GroceryBill {
 
+    public List<GroceryItem> groceryList;
+    public List<LineItem> lineList;
+    public int totalQuantity;
+    public int amountPurchased;
+    public int lineQuantity;
+
+
     // EFFECTS: constructs an empty grocery bill
     public GroceryBill() {
-        // stub
+        groceryList = new ArrayList<>();
+        lineList = new ArrayList<>();
     }
 
     // MODIFIES: this
@@ -14,23 +25,42 @@ public class GroceryBill {
     // to this bill, quantity of item purchased is increased on previous entry, rather than
     // adding a new entry
     public void addPurchase(GroceryItem item, int quantity) {
-        // stub
+        if (!groceryList.contains(item)) {
+            groceryList.add(item);
+            lineList.add(new LineItem(item, quantity));
+            lineQuantity++;
+        } else {
+            for (LineItem l : lineList) {
+                if (l.getGroceryItem() == item) {
+                    l.addQuantity(quantity);
+                }
+            }
+        }
     }
 
     // EFFECTS: returns total number of items purchased
     public int getTotalNumberOfItemsPurchased() {
-        return 0;   // stub
+        for (LineItem l : lineList) {
+            amountPurchased = amountPurchased + l.getQuantity();
+        }
+        return amountPurchased;
     }
 
     // EFFECTS: returns number of line items on this bill
     public int getNumLineItems() {
-        return 0;   // stub
+        return lineQuantity;
     }
 
     // EFFECTS: returns total quantity of item purchased on this bill;
     // returns 0 if the item has not been added to bill
     public int getTotalQuantityOfItemPurchased(GroceryItem item) {
-        return 0;   // stub
+
+        for (LineItem l : lineList) {
+            if (item == l.getGroceryItem()) {
+                totalQuantity = l.getQuantity();
+            }
+        }
+        return totalQuantity;
     }
 
     // EFFECTS: returns a string representing this bill where each
