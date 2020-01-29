@@ -58,10 +58,10 @@ class GroceryBillTest {
         b1.addPurchase(cereal, 1);
         b1.addPurchase(milk, 1);
         b1.addPurchase(tea, 1);
-        assertEquals("Grocery bill:" +
-                "1x Cereal @ $3.59" +
-                "1x Milk @ $2.99" +
-                "1x Tea @ $8.75", b1.toString());
+        assertEquals(
+                "\n1x Cereal @ $3.59" +
+                "\n1x Milk @ $2.99" +
+                "\n1x Tea @ $8.75", b1.toString());
     }
     }
 

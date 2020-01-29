@@ -1,5 +1,6 @@
 package ca.ubc.cpsc210.grocery.model;
 
+import javax.sound.sampled.Line;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class GroceryBill {
     public int totalQuantity;
     public int amountPurchased;
     public int lineQuantity;
+    public String str;
 
 
     // EFFECTS: constructs an empty grocery bill
@@ -71,6 +73,13 @@ public class GroceryBill {
     // 4x red bull @ @2.99
     // 1x macaroni cheese @ $3.55
     public String toString() {
-        return null;    // stub
+
+        for (LineItem l : lineList) {
+            str = "\n" + l.getQuantity() + "x " + l.getGroceryItem().getDescription()
+                    + " @ $" + l.getGroceryItem().getPrice() / 100.00;
+
+            return str;
+        }
+        return null;
     }
 }
