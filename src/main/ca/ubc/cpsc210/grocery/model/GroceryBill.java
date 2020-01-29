@@ -12,7 +12,7 @@ public class GroceryBill {
     public int totalQuantity;
     public int amountPurchased;
     public int lineQuantity;
-    public String str;
+    public String str = "";
 
 
     // EFFECTS: constructs an empty grocery bill
@@ -56,9 +56,8 @@ public class GroceryBill {
     // EFFECTS: returns total quantity of item purchased on this bill;
     // returns 0 if the item has not been added to bill
     public int getTotalQuantityOfItemPurchased(GroceryItem item) {
-
         for (LineItem l : lineList) {
-            if (item == l.getGroceryItem()) {
+            if (l.getGroceryItem() == item) {
                 totalQuantity = l.getQuantity();
             }
         }
@@ -75,11 +74,9 @@ public class GroceryBill {
     public String toString() {
 
         for (LineItem l : lineList) {
-            str = "\n" + l.getQuantity() + "x " + l.getGroceryItem().getDescription()
+            str += "\n" + l.getQuantity() + "x " + l.getGroceryItem().getDescription()
                     + " @ $" + l.getGroceryItem().getPrice() / 100.00;
-
-            return str;
         }
-        return null;
+        return str;
     }
 }

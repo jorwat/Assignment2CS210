@@ -47,10 +47,10 @@ class GroceryBillTest {
 
     @Test
     void testGetTotalQuantityOfItemPurchased(){
-        b1.addPurchase(cereal,1);
+        b1.addPurchase(milk,1);
         b1.addPurchase(milk, 1);
         b1.addPurchase(tea, 1);
-        assertEquals(1,b1.getTotalQuantityOfItemPurchased(milk));
+        assertEquals(2,b1.getTotalQuantityOfItemPurchased(milk));
     }
 
     @Test
