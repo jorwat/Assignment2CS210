@@ -33,7 +33,7 @@ public class GroceryBill {
             lineQuantity++;
         } else {
             for (LineItem l : lineList) {
-                if (item == l.getGroceryItem()) {
+                if (l.getGroceryItem() == item) {
                     l.addQuantity(quantity);
                 }
             }
